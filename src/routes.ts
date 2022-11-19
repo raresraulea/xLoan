@@ -1,12 +1,13 @@
-import { dAppName } from 'config';
+import LoanPoolsPage from 'pages/LoanPools';
 import withPageTitle from './components/PageTitle';
-import Dashboard from './pages/Dashboard';
+import { dAppName } from './config';
 import Home from './pages/Home';
 import Transaction from './pages/Transaction';
 
 export const routeNames = {
   home: '/',
   dashboard: '/dashboard',
+  loanPools: '/loan-pools',
   transaction: '/transaction',
   unlock: '/unlock',
   ledger: '/ledger',
@@ -20,9 +21,15 @@ const routes: Array<any> = [
     component: Home
   },
   {
+    path: routeNames.loanPools,
+    title: 'Loan Pools',
+    component: LoanPoolsPage,
+    authenticatedRoute: true
+  },
+  {
     path: routeNames.dashboard,
-    title: 'Dashboard',
-    component: Dashboard,
+    title: 'Home',
+    component: Home,
     authenticatedRoute: true
   },
   {
@@ -32,7 +39,7 @@ const routes: Array<any> = [
   }
 ];
 
-const mappedRoutes = routes.map((route) => {
+export const mappedRoutes = routes.map((route) => {
   const title = route.title
     ? `${route.title} • Elrond ${dAppName}`
     : `Elrond ${dAppName}`;

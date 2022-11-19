@@ -1,4 +1,10 @@
 import * as React from 'react';
+import { useGetLoginInfo } from '@elrondnetwork/dapp-core/hooks';
+import {
+  TransactionsToastList,
+  SignTransactionsModals,
+  NotificationModal
+} from '@elrondnetwork/dapp-core/UI';
 import { logout } from '@elrondnetwork/dapp-core/utils';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import MenuIcon from '@mui/icons-material/Menu';
@@ -17,7 +23,13 @@ import Paper from '@mui/material/Paper';
 import { styled, createTheme, ThemeProvider } from '@mui/material/styles';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import { mainListItems, secondaryListItems } from './listItems';
+import { Route, Routes } from 'react-router-dom';
+import Layout from 'components/Layout';
+import PageNotFound from 'pages/PageNotFound';
+import { routeNames } from 'routes';
+import routes from 'routes';
+import UnlockPage from '../../UnlockPage';
+import { MainListItems, secondaryListItems } from './listItems';
 
 function Copyright(props: any) {
   return (
@@ -29,7 +41,7 @@ function Copyright(props: any) {
     >
       {'Copyright © '}
       <Link color='inherit' href='https://mui.com/'>
-        Your Website
+        xLoan
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -97,115 +109,123 @@ function DashboardContent() {
   const handleLogout = () => {
     logout(`${window.location.origin}/unlock`);
   };
+  const { isLoggedIn } = useGetLoginInfo();
 
   return (
-    <ThemeProvider theme={mdTheme}>
-      <Box sx={{ display: 'flex' }}>
-        <CssBaseline />
-        <AppBar position='absolute' open={open}>
-          <Toolbar
-            sx={{
-              pr: '24px' // keep right padding when drawer closed
-            }}
-          >
-            <IconButton
-              edge='start'
-              color='inherit'
-              aria-label='open drawer'
-              onClick={toggleDrawer}
+    <Layout>
+      <TransactionsToastList />
+      <NotificationModal />
+      <SignTransactionsModals className='custom-class-for-modals' />
+
+      <ThemeProvider theme={mdTheme}>
+        <Box sx={{ display: 'flex' }}>
+          <CssBaseline />
+          <AppBar position='absolute' open={open}>
+            <Toolbar
               sx={{
-                marginRight: '36px',
-                ...(open && { display: 'none' })
+                pr: '24px' // keep right padding when drawer closed
               }}
             >
-              <MenuIcon />
-            </IconButton>
-            <Typography
-              component='h1'
-              variant='h6'
-              color='inherit'
-              noWrap
-              sx={{ flexGrow: 1 }}
+              <IconButton
+                edge='start'
+                color='inherit'
+                aria-label='open drawer'
+                onClick={toggleDrawer}
+                sx={{
+                  marginRight: '36px',
+                  ...(open && { display: 'none' })
+                }}
+              >
+                <MenuIcon />
+              </IconButton>
+              <Typography
+                component='h1'
+                variant='h6'
+                color='inherit'
+                noWrap
+                sx={{ flexGrow: 1 }}
+              >
+                Dashboard
+              </Typography>
+              {isLoggedIn && (
+                <Button
+                  sx={{ color: '#fff', cursor: 'pointer' }}
+                  onClick={handleLogout}
+                >
+                  Logout
+                </Button>
+              )}
+            </Toolbar>
+          </AppBar>
+          <Drawer variant='permanent' open={open}>
+            <Toolbar
+              sx={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                px: [2]
+              }}
             >
-              Dashboard
-            </Typography>
-            <Button
-              sx={{ color: '#fff', cursor: 'pointer' }}
-              onClick={handleLogout}
+              <Typography fontSize='26px' fontWeight={700}>
+                xLoan
+              </Typography>
+              <IconButton onClick={toggleDrawer}>
+                <ChevronLeftIcon />
+              </IconButton>
+            </Toolbar>
+            <Divider />
+            <List
+              component='nav'
+              sx={{
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'space-between',
+                height: '100%'
+              }}
             >
-              Logout
-            </Button>
-          </Toolbar>
-        </AppBar>
-        <Drawer variant='permanent' open={open}>
-          <Toolbar
+              <Box>
+                <MainListItems />
+              </Box>
+              <Box>
+                <Divider sx={{ my: 1 }} />
+                {secondaryListItems}
+              </Box>
+            </List>
+          </Drawer>
+          <Box
+            component='main'
             sx={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'flex-end',
-              px: [1]
+              backgroundColor: (theme) =>
+                theme.palette.mode === 'light'
+                  ? theme.palette.grey[100]
+                  : theme.palette.grey[900],
+              flexGrow: 1,
+              height: '100vh',
+              overflow: 'auto',
+              padding: '2rem'
             }}
           >
-            <IconButton onClick={toggleDrawer}>
-              <ChevronLeftIcon />
-            </IconButton>
-          </Toolbar>
-          <Divider />
-          <List component='nav'>
-            {mainListItems}
-            <Divider sx={{ my: 1 }} />
-            {secondaryListItems}
-          </List>
-        </Drawer>
-        <Box
-          component='main'
-          sx={{
-            backgroundColor: (theme) =>
-              theme.palette.mode === 'light'
-                ? theme.palette.grey[100]
-                : theme.palette.grey[900],
-            flexGrow: 1,
-            height: '100vh',
-            overflow: 'auto'
-          }}
-        >
-          <Toolbar />
-          <Container maxWidth='lg' sx={{ mt: 4, mb: 4 }}>
-            <Grid container spacing={3}>
-              {/* Chart */}
-              <Grid item xs={12} md={8} lg={9}>
-                <Paper
-                  sx={{
-                    p: 2,
-                    display: 'flex',
-                    flexDirection: 'column',
-                    height: 240
-                  }}
-                ></Paper>
+            <Toolbar />
+            <Container maxWidth='lg' sx={{ mt: 4, mb: 4 }}>
+              <Grid container spacing={3}>
+                <Routes>
+                  <Route path={routeNames.unlock} element={<UnlockPage />} />
+                  {routes.map((route: any, index: number) => (
+                    <Route
+                      path={route.path}
+                      key={'route-key-' + index}
+                      element={<route.component />}
+                    />
+                  ))}
+                  <Route path='*' element={<PageNotFound />} />
+                </Routes>
               </Grid>
-              {/* Recent Deposits */}
-              <Grid item xs={12} md={4} lg={3}>
-                <Paper
-                  sx={{
-                    p: 2,
-                    display: 'flex',
-                    flexDirection: 'column',
-                    height: 240
-                  }}
-                ></Paper>
-              </Grid>
-              {/* Recent Orders */}
-              <Grid item xs={12}>
-                <Paper
-                  sx={{ p: 2, display: 'flex', flexDirection: 'column' }}
-                ></Paper>
-              </Grid>
-            </Grid>
-            <Copyright sx={{ pt: 4 }} />
-          </Container>
+              <Copyright sx={{ pt: 4 }} />
+            </Container>
+          </Box>
         </Box>
-      </Box>
-    </ThemeProvider>
+      </ThemeProvider>
+    </Layout>
   );
 }
 

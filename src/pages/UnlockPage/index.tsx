@@ -7,6 +7,7 @@ import {
   WalletConnectLoginButton
 } from '@elrondnetwork/dapp-core/UI';
 import { useNavigate } from 'react-router-dom';
+import { routeNames } from 'routes';
 
 export const UnlockRoute: () => JSX.Element = () => {
   const { isLoggedIn } = useGetLoginInfo();
@@ -14,8 +15,7 @@ export const UnlockRoute: () => JSX.Element = () => {
 
   React.useEffect(() => {
     if (isLoggedIn) {
-      console.log({ isLoggedIn });
-      navigate(routeNames.dashboard);
+      navigate(routeNames.loanPools);
     }
   }, [isLoggedIn]);
 
@@ -28,20 +28,20 @@ export const UnlockRoute: () => JSX.Element = () => {
             <p className='mb-4'>pick a login method</p>
 
             <ExtensionLoginButton
-              callbackRoute={routeNames.dashboard}
+              callbackRoute={routeNames.loanPools}
               loginButtonText={'Extension'}
             />
             <WebWalletLoginButton
-              callbackRoute={routeNames.dashboard}
+              callbackRoute={routeNames.loanPools}
               loginButtonText={'Web wallet'}
             />
             <LedgerLoginButton
               loginButtonText={'Ledger'}
-              callbackRoute={routeNames.dashboard}
+              callbackRoute={routeNames.loanPools}
               className={'test-class_name'}
             />
             <WalletConnectLoginButton
-              callbackRoute={routeNames.dashboard}
+              callbackRoute={routeNames.loanPools}
               loginButtonText={'Maiar'}
             />
           </div>
