@@ -6,14 +6,16 @@ import {
   LedgerLoginButton,
   WalletConnectLoginButton
 } from '@elrondnetwork/dapp-core/UI';
-import { routeNames } from 'routes';
+import { useNavigate } from 'react-router-dom';
 
 export const UnlockRoute: () => JSX.Element = () => {
   const { isLoggedIn } = useGetLoginInfo();
+  const navigate = useNavigate();
 
   React.useEffect(() => {
     if (isLoggedIn) {
-      window.location.href = routeNames.dashboard;
+      console.log({ isLoggedIn });
+      navigate(routeNames.dashboard);
     }
   }, [isLoggedIn]);
 
