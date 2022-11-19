@@ -22,13 +22,13 @@ export const MainListItems = () => {
         </ListItemIcon>
         <ListItemText primary='Loan Pools' />
       </ListItemButton>
-      <ListItemButton>
+      <ListItemButton onClick={() => navigate(routeNames.loans)}>
         <ListItemIcon>
           <ShoppingCartIcon />
         </ListItemIcon>
         <ListItemText primary='Your Loans' />
       </ListItemButton>
-      <ListItemButton>
+      <ListItemButton onClick={() => navigate(routeNames.contributions)}>
         <ListItemIcon>
           <PeopleIcon />
         </ListItemIcon>

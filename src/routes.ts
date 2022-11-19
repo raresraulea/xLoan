@@ -1,4 +1,6 @@
+import ContributionsPage from 'pages/Contributions';
 import LoanPoolsPage from 'pages/LoanPools';
+import LoansPage from 'pages/Loans';
 import withPageTitle from './components/PageTitle';
 import { dAppName } from './config';
 import Home from './pages/Home';
@@ -9,6 +11,8 @@ export const routeNames = {
   dashboard: '/dashboard',
   loanPools: '/loan-pools',
   transaction: '/transaction',
+  loans: '/loans',
+  contributions: '/contributions',
   unlock: '/unlock',
   ledger: '/ledger',
   walletconnect: '/walletconnect'
@@ -24,6 +28,18 @@ const routes: Array<any> = [
     path: routeNames.loanPools,
     title: 'Loan Pools',
     component: LoanPoolsPage,
+    authenticatedRoute: true
+  },
+  {
+    path: routeNames.loans,
+    title: 'Loans',
+    component: LoansPage,
+    authenticatedRoute: true
+  },
+  {
+    path: routeNames.contributions,
+    title: 'Your Contributions',
+    component: ContributionsPage,
     authenticatedRoute: true
   },
   {
