@@ -6,6 +6,8 @@ import {
   NotificationModal
 } from '@elrondnetwork/dapp-core/UI';
 import { logout } from '@elrondnetwork/dapp-core/utils';
+import Brightness4Icon from '@mui/icons-material/Brightness4';
+import Brightness7Icon from '@mui/icons-material/Brightness7';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import MenuIcon from '@mui/icons-material/Menu';
 import { Button } from '@mui/material';
@@ -19,12 +21,12 @@ import Grid from '@mui/material/Grid';
 import IconButton from '@mui/material/IconButton';
 import Link from '@mui/material/Link';
 import List from '@mui/material/List';
-import Paper from '@mui/material/Paper';
-import { styled, createTheme, ThemeProvider } from '@mui/material/styles';
+import { styled } from '@mui/material/styles';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import { Route, Routes } from 'react-router-dom';
 import Layout from 'components/Layout';
+import { ModeContext } from 'context/ModeContext';
 import PageNotFound from 'pages/PageNotFound';
 import { routeNames } from 'routes';
 import routes from 'routes';
@@ -99,10 +101,9 @@ const Drawer = styled(MuiDrawer, {
   }
 }));
 
-const mdTheme = createTheme();
-
 function DashboardContent() {
   const [open, setOpen] = React.useState(true);
+  const [mode, setMode] = React.useContext(ModeContext);
   const toggleDrawer = () => {
     setOpen(!open);
   };
@@ -117,36 +118,39 @@ function DashboardContent() {
       <NotificationModal />
       <SignTransactionsModals className='custom-class-for-modals' />
 
-      <ThemeProvider theme={mdTheme}>
-        <Box sx={{ display: 'flex' }}>
-          <CssBaseline />
-          <AppBar position='absolute' open={open}>
-            <Toolbar
+      <Box sx={{ display: 'flex' }}>
+        <CssBaseline />
+        <AppBar position='absolute' open={open}>
+          <Toolbar
+            sx={{
+              pr: '24px', // keep right padding when drawer closed
+              backgroundColor: (theme) => theme.palette.background.default,
+              display: 'flex',
+              justifyContent: open ? 'flex-end' : 'space-between',
+              height: '65px',
+              borderBottom: (theme) => '1px solid rgba(255,255,255, 0.12)'
+            }}
+          >
+            <IconButton
+              edge='start'
+              color='inherit'
+              aria-label='open drawer'
+              onClick={toggleDrawer}
               sx={{
-                pr: '24px' // keep right padding when drawer closed
+                marginRight: '36px',
+                ...(open && { display: 'none' })
               }}
             >
+              <MenuIcon />
+            </IconButton>
+            <Box>
               <IconButton
-                edge='start'
+                sx={{ ml: 1 }}
+                onClick={() => setMode(mode === 'light' ? 'dark' : 'light')}
                 color='inherit'
-                aria-label='open drawer'
-                onClick={toggleDrawer}
-                sx={{
-                  marginRight: '36px',
-                  ...(open && { display: 'none' })
-                }}
               >
-                <MenuIcon />
+                {mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
               </IconButton>
-              <Typography
-                component='h1'
-                variant='h6'
-                color='inherit'
-                noWrap
-                sx={{ flexGrow: 1 }}
-              >
-                Dashboard
-              </Typography>
               {isLoggedIn && (
                 <Button
                   sx={{ color: '#fff', cursor: 'pointer' }}
@@ -155,76 +159,73 @@ function DashboardContent() {
                   Logout
                 </Button>
               )}
-            </Toolbar>
-          </AppBar>
-          <Drawer variant='permanent' open={open}>
-            <Toolbar
-              sx={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'space-between',
-                px: [2]
-              }}
-            >
-              <Typography fontSize='26px' fontWeight={700}>
-                xLoan
-              </Typography>
-              <IconButton onClick={toggleDrawer}>
-                <ChevronLeftIcon />
-              </IconButton>
-            </Toolbar>
-            <Divider />
-            <List
-              component='nav'
-              sx={{
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'space-between',
-                height: '100%'
-              }}
-            >
-              <Box>
-                <MainListItems />
-              </Box>
-              <Box>
-                <Divider sx={{ my: 1 }} />
-                {secondaryListItems}
-              </Box>
-            </List>
-          </Drawer>
-          <Box
-            component='main'
+            </Box>
+          </Toolbar>
+        </AppBar>
+        <Drawer variant='permanent' open={open}>
+          <Toolbar
             sx={{
-              backgroundColor: (theme) =>
-                theme.palette.mode === 'light'
-                  ? theme.palette.grey[100]
-                  : theme.palette.grey[900],
-              flexGrow: 1,
-              height: '100vh',
-              overflow: 'auto',
-              padding: '2rem'
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
+              px: [2]
             }}
           >
-            <Toolbar />
-            <Container maxWidth='lg' sx={{ mt: 4, mb: 4 }}>
-              <Grid container spacing={3}>
-                <Routes>
-                  <Route path={routeNames.unlock} element={<UnlockPage />} />
-                  {routes.map((route: any, index: number) => (
-                    <Route
-                      path={route.path}
-                      key={'route-key-' + index}
-                      element={<route.component />}
-                    />
-                  ))}
-                  <Route path='*' element={<PageNotFound />} />
-                </Routes>
-              </Grid>
-              <Copyright sx={{ pt: 4 }} />
-            </Container>
-          </Box>
+            <Typography fontSize='26px' fontWeight={700}>
+              xLoan
+            </Typography>
+            <IconButton onClick={toggleDrawer}>
+              <ChevronLeftIcon />
+            </IconButton>
+          </Toolbar>
+          <Divider />
+          <List
+            component='nav'
+            sx={{
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'space-between',
+              height: '100%'
+            }}
+          >
+            <Box>
+              <MainListItems />
+            </Box>
+            <Box>
+              <Divider sx={{ my: 1 }} />
+              {secondaryListItems}
+            </Box>
+          </List>
+        </Drawer>
+        <Box
+          component='main'
+          sx={{
+            backgroundColor: (theme) => theme.palette.background.default,
+            flexGrow: 1,
+            height: '100vh',
+            overflow: 'auto',
+            padding: '2rem'
+          }}
+        >
+          <Toolbar />
+          <Container maxWidth='lg' sx={{ mt: 4, mb: 4 }}>
+            <Grid container spacing={3}>
+              <Routes>
+                <Route path={routeNames.unlock} element={<UnlockPage />} />
+                {routes.map((route: any, index: number) => (
+                  <Route
+                    path={route.path}
+                    key={'route-key-' + index}
+                    element={<route.component />}
+                  />
+                ))}
+                <Route path='*' element={<PageNotFound />} />
+              </Routes>
+            </Grid>
+            <Copyright sx={{ pt: 4 }} />
+          </Container>
         </Box>
-      </ThemeProvider>
+      </Box>
     </Layout>
   );
 }

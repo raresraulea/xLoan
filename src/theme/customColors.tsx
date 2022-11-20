@@ -1,16 +1,16 @@
 const colors = {
-  backgroundDefault: '#111122',
+  backgroundDefault: '#14131C',
   boxColor: '#8D99AE',
   primaryMain: '#EDF2F4',
   primaryWithOpacity50: 'rgba(237, 242, 244, 0.5)',
-  secondaryMain: '#1D1D35',
+  secondaryMain: '#1E1D2A',
   errorMain: '#EF233C',
   successMain: '#47E4AC',
   mainBackground: 'linear-gradient(180deg, #1A1A30 0%, #18182C 100%)',
   chartOrange: '#E0621B',
   chartBlue: '#1BBDE0',
   ebonyClay: '#2B2D4233',
-  lightBlue: '#8d99ae1a',
+  lightBlue: '#B9CBE8',
   lightDark: '#8d99ae33',
   baliHai: '#2E2E42',
   lightGrey: '#8d99ae17',
@@ -25,7 +25,8 @@ const colors = {
   darkOrangeText: '#513C05',
   darkBlueText: '#042748',
   orange: '#FAC428',
-  darkGray: '#35364C'
+  darkGray: '#35364C',
+  goldish: '#C1CB9A'
 };
 
 export default colors;

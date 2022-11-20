@@ -7,6 +7,6 @@ export const LinkStyled = styled(Link)(({ theme }) => ({
   color: colors.blue,
   textDecoration: 'underline',
   '&:hover': {
-    textDecoration: 'underline',
-  },
+    textDecoration: 'underline'
+  }
 }));

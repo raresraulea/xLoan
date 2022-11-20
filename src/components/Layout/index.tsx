@@ -17,7 +17,6 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
           {children}
         </AuthenticatedRoutesWrapper>
       </main>
-      <Footer />
     </div>
   );
 };

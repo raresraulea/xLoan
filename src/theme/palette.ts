@@ -4,7 +4,8 @@ import colors from './customColors';
 const darkPallete: PaletteOptions = {
   background: {
     paper: colors.mainBackground,
-    default: colors.backgroundDefault
+    default: colors.backgroundDefault,
+    goldish: colors.goldish
   },
   primary: {
     main: colors.primaryMain,
@@ -35,7 +36,8 @@ const darkPallete: PaletteOptions = {
 const lightPalette: PaletteOptions = {
   background: {
     paper: colors.primaryMain,
-    default: colors.boxColor
+    default: colors.boxColor,
+    goldish: colors.goldish
   },
   primary: {
     main: colors.backgroundDefault,

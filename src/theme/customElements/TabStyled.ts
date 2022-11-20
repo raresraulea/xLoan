@@ -6,9 +6,9 @@ export const TabStyled = styled(Tab)(({ theme }) => ({
   color: theme.palette.primary.main,
   opacity: '50%',
   '&.Mui-selected': {
-    opacity: '100%',
+    opacity: '100%'
   },
   [theme.breakpoints.down('lg')]: {
-    paddingInline: '1.5rem',
-  },
+    paddingInline: '1.5rem'
+  }
 }));

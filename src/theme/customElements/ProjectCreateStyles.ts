@@ -6,7 +6,7 @@ import {
   stepConnectorClasses,
   TextareaAutosize,
   TextField,
-  Typography,
+  Typography
 } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import colors from '../customColors';
@@ -19,20 +19,20 @@ export const StyledFiled = styled(TextField)(() => ({
   '& .MuiInputLabel-outlined': {
     top: '-10px',
     fontSize: '0.9rem',
-    zIndex: 0,
+    zIndex: 0
   },
   '& .MuiOutlinedInput-input': {
     paddingBlock: '0.3rem',
     '::-webkit-calendar-picker-indicator': {
       filter:
         'invert(100%) sepia(71%) saturate(493%) hue-rotate(175deg) brightness(102%) contrast(91%)',
-      cursor: 'pointer',
-    },
+      cursor: 'pointer'
+    }
     // "input::-webkit-inner-spin-button": {
     //   "-webkit-appearance": "none",
     //   margin: 0,
     // },
-  },
+  }
 }));
 
 export const ProjectCreateDetails = styled(Box)(({ theme }) => ({
@@ -51,23 +51,23 @@ export const ProjectCreateDetails = styled(Box)(({ theme }) => ({
     "div1 div2"
     "div3 div4"
     "div5 div6"
-    `,
+    `
   },
   [theme.breakpoints.down('sm')]: {
     gridTemplateColumns: '1fr',
     gridTemplateAreas: ` 
-    "div1" "div2" "div3" "div4" "div5" "div6"`,
-  },
+    "div1" "div2" "div3" "div4" "div5" "div6"`
+  }
 }));
 
 export const FieldStyle = {
   padding: '0',
   borderRadius: '6px',
-  border: '1px solid transparent',
+  border: '1px solid transparent'
 };
 
 export const OverviewWrapper = styled(ProjectOverview)(() => ({
-  paddingTop: '1rem',
+  paddingTop: '1rem'
 }));
 
 export const CloseInputBtn = styled(Button)(() => ({
@@ -82,8 +82,8 @@ export const CloseInputBtn = styled(Button)(() => ({
   padding: '0.5rem',
   zIndex: 1,
   ':hover': {
-    backgroundColor: colors.baliHai,
-  },
+    backgroundColor: colors.baliHai
+  }
 }));
 
 export const LinearProgressStyled = styled(LinearProgress)(() => ({
@@ -92,20 +92,20 @@ export const LinearProgressStyled = styled(LinearProgress)(() => ({
   backgroundColor: 'success',
   '& .MuiLinearProgress-bar': {
     borderRadius: '6px',
-    backgroundColor: 'success',
-  },
+    backgroundColor: 'success'
+  }
 }));
 
 export const DealStatusBtn = styled(Button)(() => ({
   height: '30px',
-  marginTop: '0.1rem',
+  marginTop: '0.1rem'
 }));
 
 export const TeamContainer = styled(Box)(() => ({
   display: 'grid',
   gridTemplateColumns: '1fr 1fr 1fr 1fr',
   gap: '0.5rem',
-  marginBottom: '2rem',
+  marginBottom: '2rem'
 }));
 
 export const TeamCard = styled(ProjectOverview)(() => ({
@@ -114,7 +114,7 @@ export const TeamCard = styled(ProjectOverview)(() => ({
   paddingBottom: '1rem',
   paddingLeft: '1rem',
   display: 'flex',
-  flexDirection: 'column',
+  flexDirection: 'column'
 }));
 
 export const TeamText = styled(Typography)(({ theme }) => ({
@@ -122,7 +122,7 @@ export const TeamText = styled(Typography)(({ theme }) => ({
   fontWeight: 400,
   opacity: 0.7,
   lineHeight: '150%',
-  paddingRight: '1rem',
+  paddingRight: '1rem'
 }));
 
 export const AddTeamCardStyled = styled(Box)(({ theme }) => ({
@@ -131,7 +131,7 @@ export const AddTeamCardStyled = styled(Box)(({ theme }) => ({
   flexDirection: 'column',
   border: `1px solid ${theme.palette.secondary.light}`,
   padding: '1rem',
-  borderRadius: '6px',
+  borderRadius: '6px'
 }));
 
 export const TextArea = styled(TextareaAutosize)(({ theme }) => ({
@@ -144,7 +144,7 @@ export const TextArea = styled(TextareaAutosize)(({ theme }) => ({
   border: `1px solid ${theme.palette.secondary.light}`,
   outline: 'none',
   color: theme.palette.primary.main,
-  padding: '0.5rem',
+  padding: '0.5rem'
 }));
 
 export const CloseBtn = styled(Button)(({ theme }) => ({
@@ -156,15 +156,15 @@ export const CloseBtn = styled(Button)(({ theme }) => ({
   right: '3px',
   borderRadius: '4px',
   ':hover': {
-    backgroundColor: theme.palette.secondary.light,
-  },
+    backgroundColor: theme.palette.secondary.light
+  }
 }));
 
 export const PartnersContainer = styled(Box)(() => ({
   display: 'grid',
   gridTemplateColumns: '1fr 1fr 1fr 1fr',
   gap: '0.5rem',
-  marginBottom: '2rem',
+  marginBottom: '2rem'
 }));
 
 export const AddPartnerBox = styled(ProjectOverview)(() => ({
@@ -173,8 +173,8 @@ export const AddPartnerBox = styled(ProjectOverview)(() => ({
   padding: '0',
   minHeight: '125px',
   ':hover': {
-    backgroundColor: colors.baliHai,
-  },
+    backgroundColor: colors.baliHai
+  }
 }));
 
 export const PartnersCard = styled(ProjectOverview)(() => ({
@@ -182,7 +182,7 @@ export const PartnersCard = styled(ProjectOverview)(() => ({
   flexDirection: 'column',
   margin: '0',
   padding: '0',
-  paddingBottom: '2.5rem',
+  paddingBottom: '2.5rem'
 }));
 
 export const RoadmapAddBtnStyled = styled(Button)(({ theme }) => ({
@@ -193,45 +193,45 @@ export const RoadmapAddBtnStyled = styled(Button)(({ theme }) => ({
   height: 100,
   borderRadius: '6px',
   ':hover': {
-    backgroundColor: theme.palette.secondary.light,
-  },
+    backgroundColor: theme.palette.secondary.light
+  }
 }));
 
 export const SocialCard = styled(ProjectOverview)(() => ({
   display: 'flex',
   flexDirection: 'column',
   margin: '0',
-  padding: '0',
+  padding: '0'
 }));
 
 export const AddInputBox = styled(Box)(() => ({
   position: 'relative',
   width: '200px',
-  paddingTop: '2rem',
+  paddingTop: '2rem'
 }));
 
 export const StyledConnector = styled(StepConnector)(({ theme }) => ({
   [`&.${stepConnectorClasses.root}`]: {
     right: 'calc(50% + 10px)',
-    left: 'calc(-50% + 10px)',
+    left: 'calc(-50% + 10px)'
   },
   [`&.${stepConnectorClasses.alternativeLabel}`]: {
-    top: 10,
+    top: 10
   },
   [`&.${stepConnectorClasses.active}`]: {
     [`& .${stepConnectorClasses.line}`]: {
-      backgroundColor: theme.palette.error.main,
-    },
+      backgroundColor: theme.palette.error.main
+    }
   },
   [`&.${stepConnectorClasses.completed}`]: {
     [`& .${stepConnectorClasses.line}`]: {
-      backgroundColor: theme.palette.error.main,
-    },
+      backgroundColor: theme.palette.error.main
+    }
   },
   [`& .${stepConnectorClasses.line}`]: {
     height: 1,
     border: 0,
     backgroundColor: theme.palette.secondary.light,
-    borderRadius: 1,
-  },
+    borderRadius: 1
+  }
 }));

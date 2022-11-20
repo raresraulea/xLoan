@@ -1,8 +1,13 @@
 import { PaletteMode } from '@mui/material';
 import { createTheme, Theme, ThemeOptions } from '@mui/material/styles';
+import componentStyleOverrides from './compStyleOverride';
 
 import themePalette from './palette';
 import themeTypography from './typography';
+
+const customization = {
+  borderRadius: 'none'
+};
 
 export const breakPoints = {
   values: {
@@ -23,6 +28,12 @@ export const theme = (mode: PaletteMode): Theme => {
   };
 
   const themeValue = createTheme(themeOptions);
+
+  themeValue.components = componentStyleOverrides({
+    palette,
+    customization,
+    typography
+  });
   return themeValue;
 };
 

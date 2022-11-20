@@ -6,6 +6,7 @@ import {
   LedgerLoginButton,
   WalletConnectLoginButton
 } from '@elrondnetwork/dapp-core/UI';
+import { Box, Card, Typography } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { routeNames } from 'routes';
 
@@ -20,12 +21,19 @@ export const UnlockRoute: () => JSX.Element = () => {
   }, [isLoggedIn]);
 
   return (
-    <div className='home d-flex flex-fill align-items-center'>
-      <div className='m-auto' data-testid='unlockPage'>
-        <div className='card my-4 text-center'>
-          <div className='card-body py-4 px-2 px-sm-2 mx-lg-4'>
-            <h4 className='mb-4'>Login</h4>
-            <p className='mb-4'>pick a login method</p>
+    <Card
+      sx={{ borderRadius: '10px' }}
+      className='home d-flex flex-fill align-items-center'
+    >
+      <Box className='m-auto' data-testid='unlockPage'>
+        <Box className='my-4 text-center'>
+          <Box className='py-4 px-2 px-sm-2 mx-lg-4'>
+            <Typography variant='h4' className='mb-4'>
+              Login
+            </Typography>
+            <Typography variant='subtitle1' className='mb-4'>
+              pick a login method
+            </Typography>
 
             <ExtensionLoginButton
               callbackRoute={routeNames.loanPools}
@@ -44,10 +52,10 @@ export const UnlockRoute: () => JSX.Element = () => {
               callbackRoute={routeNames.loanPools}
               loginButtonText={'Maiar'}
             />
-          </div>
-        </div>
-      </div>
-    </div>
+          </Box>
+        </Box>
+      </Box>
+    </Card>
   );
 };
 

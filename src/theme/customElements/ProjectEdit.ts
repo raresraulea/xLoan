@@ -7,8 +7,8 @@ export const EditBtnStyle = {
   padding: '0.3rem',
   borderRadius: '4px',
   ':hover': {
-    backgroundColor: 'secondary.light',
-  },
+    backgroundColor: 'secondary.light'
+  }
 };
 
 export const SaveBtn = styled(Button)(() => ({
@@ -17,5 +17,5 @@ export const SaveBtn = styled(Button)(() => ({
   marginLeft: '0.5rem',
   position: 'absolute',
   top: '6px',
-  right: '55px',
+  right: '55px'
 }));
