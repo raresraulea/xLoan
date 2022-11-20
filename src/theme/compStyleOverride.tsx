@@ -76,7 +76,7 @@ export default function componentStyleOverrides({
           minWidth: 'unset'
         },
         contained: {
-          backgroundColor: (palette.primary as SimplePaletteColorOptions).main,
+          backgroundColor: palette?.background?.goldish,
           color: palette.background?.default
         },
         outlined: {

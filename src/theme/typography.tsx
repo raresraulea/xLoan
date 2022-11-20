@@ -20,7 +20,7 @@ export default function themeTypography(
     h2: {
       fontFamily: 'IBM Plex Sans',
       fontSize: '1.25rem', // 20px
-      fontWeight: '100',
+      fontWeight: '500 !important',
       color: colors.text?.primary
     },
     h3: {
