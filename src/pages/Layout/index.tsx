@@ -30,8 +30,9 @@ import { ModeContext } from 'context/ModeContext';
 import PageNotFound from 'pages/PageNotFound';
 import { routeNames } from 'routes';
 import routes from 'routes';
-import UnlockPage from '../../UnlockPage';
+import UnlockPage from '../UnlockPage';
 import { MainListItems, secondaryListItems } from './listItems';
+import ModalLayer from './ModalLayer';
 
 function Copyright(props: any) {
   return (
@@ -117,7 +118,7 @@ function DashboardContent() {
       <TransactionsToastList />
       <NotificationModal />
       <SignTransactionsModals className='custom-class-for-modals' />
-
+      <ModalLayer />
       <Box sx={{ display: 'flex' }}>
         <CssBaseline />
         <AppBar position='absolute' open={open}>
