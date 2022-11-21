@@ -1,24 +1,23 @@
 import * as React from 'react';
-import { useTheme } from '@mui/material';
+import { Divider, Typography, useTheme } from '@mui/material';
 import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
 import { useDispatch } from 'react-redux';
 import { setGlobalModalSelectedOption } from 'redux/slices/modalsSlice';
+import * as Styled from './styled';
 
 interface BaseModalProps {
   content: React.ReactElement;
-  buttonText: string;
+  title: string;
 }
 
-export const BaseModal = ({
-  content,
-  buttonText = 'Click'
-}: BaseModalProps) => {
+export const BaseModal = ({ content, title }: BaseModalProps) => {
   const dispatch = useDispatch();
-  const [open, setOpen] = React.useState(false);
-  const handleOpen = () => dispatch(setGlobalModalSelectedOption('select'));
-  const handleClose = () => setOpen(false);
+  const [open, setOpen] = React.useState(true);
+  const handleClose = () => {
+    setOpen(false);
+    dispatch(setGlobalModalSelectedOption(null));
+  };
 
   const theme = useTheme();
 
@@ -31,25 +30,25 @@ export const BaseModal = ({
       width: 400,
       backgroundColor: theme.palette.secondary.main,
       borderRadius: '10px',
-      boxShadow: 24,
-      p: 4
+      boxShadow: 24
     }),
     [theme]
   );
 
   return (
-    <div>
-      <Button variant='contained' onClick={handleOpen}>
-        {buttonText}
-      </Button>
-      <Modal
-        open={open}
-        onClose={handleClose}
-        aria-labelledby='modal-modal-title'
-        aria-describedby='modal-modal-description'
-      >
-        <Box sx={style}>{content}</Box>
-      </Modal>
-    </div>
+    <Modal
+      open={open}
+      onClose={handleClose}
+      aria-labelledby='modal-modal-title'
+      aria-describedby='modal-modal-description'
+    >
+      <Box sx={style}>
+        <Styled.ModalTitleBox>
+          <Typography variant='h2'>{title}</Typography>
+        </Styled.ModalTitleBox>
+        <Divider />
+        <Styled.ModalContentBox>{content}</Styled.ModalContentBox>
+      </Box>
+    </Modal>
   );
 };

@@ -14,7 +14,7 @@ import { flexCentered } from '../utility';
 import { ProjectOverview } from './ProjectSinglePageCustomElem';
 
 export const StyledFiled = styled(TextField)(() => ({
-  borderRadius: '6px',
+  borderRadius: '4px',
   border: '1px solid transparent',
   '& .MuiInputLabel-outlined': {
     top: '-10px',
@@ -62,7 +62,7 @@ export const ProjectCreateDetails = styled(Box)(({ theme }) => ({
 
 export const FieldStyle = {
   padding: '0',
-  borderRadius: '6px',
+  borderRadius: '4px',
   border: '1px solid transparent'
 };
 
@@ -88,10 +88,10 @@ export const CloseInputBtn = styled(Button)(() => ({
 
 export const LinearProgressStyled = styled(LinearProgress)(() => ({
   height: '10px',
-  borderRadius: '6px',
+  borderRadius: '4px',
   backgroundColor: 'success',
   '& .MuiLinearProgress-bar': {
-    borderRadius: '6px',
+    borderRadius: '4px',
     backgroundColor: 'success'
   }
 }));
@@ -131,7 +131,7 @@ export const AddTeamCardStyled = styled(Box)(({ theme }) => ({
   flexDirection: 'column',
   border: `1px solid ${theme.palette.secondary.light}`,
   padding: '1rem',
-  borderRadius: '6px'
+  borderRadius: '4px'
 }));
 
 export const TextArea = styled(TextareaAutosize)(({ theme }) => ({
@@ -140,7 +140,7 @@ export const TextArea = styled(TextareaAutosize)(({ theme }) => ({
   minWidth: '200px',
   minHeight: '100px',
   backgroundColor: `${theme.palette.secondary.main}`,
-  borderRadius: '6px',
+  borderRadius: '4px',
   border: `1px solid ${theme.palette.secondary.light}`,
   outline: 'none',
   color: theme.palette.primary.main,
@@ -191,7 +191,7 @@ export const RoadmapAddBtnStyled = styled(Button)(({ theme }) => ({
   border: `1px solid ${theme.palette.secondary.light}`,
   width: 200,
   height: 100,
-  borderRadius: '6px',
+  borderRadius: '4px',
   ':hover': {
     backgroundColor: theme.palette.secondary.light
   }

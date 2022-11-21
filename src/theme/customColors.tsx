@@ -26,7 +26,11 @@ const colors = {
   darkBlueText: '#042748',
   orange: '#FAC428',
   darkGray: '#35364C',
-  goldish: '#C1CB9A'
+  goldish: '#c1cb9aba',
+  lightText: '#ededed',
+  darkText: '#353535',
+  blueish: '#B9CBE8',
+  white: '#FFF'
 };
 
 export default colors;

@@ -1,4 +1,5 @@
 import { Components, SimplePaletteColorOptions } from '@mui/material';
+import palette from './palette';
 import { ThemeOptions } from './types';
 
 export default function componentStyleOverrides({
@@ -34,7 +35,7 @@ export default function componentStyleOverrides({
         root: {
           fontWeight: 200,
           color: (palette.primary as SimplePaletteColorOptions).main,
-          borderRadius: '6px',
+          borderRadius: '4px',
           backgroundColor: (palette.error as SimplePaletteColorOptions).light,
           boxShadow: 'none'
         },
@@ -68,17 +69,34 @@ export default function componentStyleOverrides({
 
     MuiButton: {
       styleOverrides: {
-        root: {
-          borderRadius: '6px',
+        root: () => ({
+          borderRadius: '4px',
           fontWeight: 'bold',
           fontSize: '13px',
           padding: '0.6rem 1rem',
           minWidth: 'unset'
-        },
-        contained: {
-          backgroundColor: palette?.background?.goldish,
-          color: palette.background?.default
-        },
+        }),
+        contained: ({ ownerState }) => ({
+          backgroundColor:
+            ownerState.color === 'primary'
+              ? palette?.background?.goldish + ' !important'
+              : palette?.background?.blueish,
+          color:
+            ownerState.color === 'primary'
+              ? palette.text?.white
+              : palette.text?.buttonPrimary,
+          border: 'none !important',
+          '&:hover': {
+            backgroundColor:
+              ownerState.color === 'primary'
+                ? palette?.background?.goldish + ' !important'
+                : palette?.background?.blueish,
+            color:
+              ownerState.color === 'primary'
+                ? palette.text?.white
+                : palette.text?.buttonPrimary
+          }
+        }),
         outlined: {
           borderWidth: '1px',
           borderStyle: 'solid',
@@ -113,7 +131,7 @@ export default function componentStyleOverrides({
     MuiIconButton: {
       styleOverrides: {
         root: {
-          borderRadius: '6px',
+          borderRadius: '4px',
           padding: '0.2rem'
         }
       }
@@ -152,7 +170,7 @@ export default function componentStyleOverrides({
         sizeSmall: {
           fontWeight: 200,
           color: (palette.primary as SimplePaletteColorOptions).main,
-          borderRadius: '6px',
+          borderRadius: '4px',
           backgroundColor: (palette.error as SimplePaletteColorOptions).light,
           width: '100%',
           boxShadow: 'none',

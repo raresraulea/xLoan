@@ -12,7 +12,7 @@ export const EditBtnStyle = {
 };
 
 export const SaveBtn = styled(Button)(() => ({
-  borderRadius: '6px',
+  borderRadius: '4px',
   padding: '0.3rem 1rem',
   marginLeft: '0.5rem',
   position: 'absolute',

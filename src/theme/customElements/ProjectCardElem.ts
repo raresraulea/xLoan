@@ -3,7 +3,7 @@ import { styled } from '@mui/material/styles';
 
 export const BoxContainer = styled(Box)(({ theme }) => ({
   backgroundColor: `${theme.palette.secondary.main}`,
-  borderRadius: '6px',
+  borderRadius: '4px',
   border: `1px solid ${theme.palette.secondary.light}`
 }));
 
@@ -16,7 +16,7 @@ export const ProjectName = styled(Typography)(({ theme }) => ({
 export const FilterSelect = styled(Select)(() => ({
   backgroundColor: 'transparent',
   border: '1px solid #edf2f49e',
-  borderRadius: '6px',
+  borderRadius: '4px',
   opacity: '50%',
   padding: '0rem !important'
 

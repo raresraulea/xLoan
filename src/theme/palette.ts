@@ -5,7 +5,8 @@ const darkPallete: PaletteOptions = {
   background: {
     paper: colors.mainBackground,
     default: colors.backgroundDefault,
-    goldish: colors.goldish
+    goldish: colors.goldish,
+    blueish: colors.blueish
   },
   primary: {
     main: colors.primaryMain,
@@ -29,7 +30,9 @@ const darkPallete: PaletteOptions = {
   },
   text: {
     primary: colors.primaryMain,
-    secondary: colors.boxColor
+    secondary: colors.boxColor,
+    buttonPrimary: colors.backgroundDefault,
+    white: colors.white
   }
 };
 
@@ -37,7 +40,8 @@ const lightPalette: PaletteOptions = {
   background: {
     paper: colors.primaryMain,
     default: colors.boxColor,
-    goldish: colors.goldish
+    goldish: colors.goldish,
+    blueish: colors.blueish
   },
   primary: {
     main: colors.backgroundDefault,
@@ -60,7 +64,9 @@ const lightPalette: PaletteOptions = {
   },
   text: {
     primary: colors.primaryMain,
-    secondary: colors.primaryMain
+    secondary: colors.primaryMain,
+    buttonPrimary: colors.backgroundDefault,
+    white: colors.white
   }
 };
 

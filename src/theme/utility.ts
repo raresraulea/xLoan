@@ -3,7 +3,7 @@ import { styled } from '@mui/material/styles';
 import colors from './customColors';
 
 export const opacity50 = { opacity: '50%' };
-export const borderRadius6 = { borderRadius: '6px' };
+export const borderRadius6 = { borderRadius: '4px' };
 export const borderRadius4 = { borderRadius: '4px' };
 export const flexColumn = { display: 'flex', flexDirection: 'column' };
 

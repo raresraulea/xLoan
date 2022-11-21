@@ -40,7 +40,7 @@ export const ProjectDetails = styled(Box)(({ theme }) => ({
 export const ProjectDetailsCard = styled(Box)(({ theme }) => ({
   backgroundColor: `${theme.palette.secondary.main}`,
   border: `1px solid ${theme.palette.secondary.light}`,
-  borderRadius: '6px',
+  borderRadius: '4px',
   padding: '1rem',
   height: '125px'
 }));
@@ -142,7 +142,7 @@ export const ProjectTeamCardContainer = styled(Box)(() => ({
 export const ProjectTeamCard = styled(Box)(({ theme }) => ({
   backgroundColor: `${theme.palette.secondary.main}`,
   border: `1px solid ${theme.palette.secondary.light}`,
-  borderRadius: '6px',
+  borderRadius: '4px',
   padding: '1rem'
 }));
 
@@ -174,7 +174,7 @@ export const ProjectSocialCardContainer = styled(Box)(() => ({
 export const ProjectSocialCard = styled(Box)(({ theme }) => ({
   backgroundColor: `${theme.palette.secondary.main}`,
   border: `1px solid ${theme.palette.secondary.light}`,
-  borderRadius: '6px',
+  borderRadius: '4px',
   padding: '3rem',
   ...flexCentered
 }));
