@@ -66,6 +66,13 @@ export default function componentStyleOverrides({
         }
       }
     },
+    MuiContainer: {
+      styleOverrides: {
+        root: {
+          marginY: '0'
+        }
+      }
+    },
 
     MuiButton: {
       styleOverrides: {

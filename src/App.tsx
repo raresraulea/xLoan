@@ -7,7 +7,7 @@ import Dashboard from 'pages/Layout';
 import ModeProvider from './context/ModeContext';
 import { persistor, store } from './redux/store';
 
-const environment = 'testnet';
+const environment = 'devnet';
 
 const App = () => {
   return (
