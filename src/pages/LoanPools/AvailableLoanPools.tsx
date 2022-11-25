@@ -1,22 +1,28 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { Grid } from '@mui/material';
+import { useQuery } from '@tanstack/react-query';
+import axios from 'axios';
+import { LoanPoolsModel } from 'interfaces/models/LoanPoolsModel';
 import { LoanPoolCard } from './LoanPoolCard';
 
 const AvailableLoanPools = () => {
+  const fetchLoanPools = useCallback(async () => {
+    const { data } = await axios.get('http://localhost:3000/loan-pools');
+    return data;
+  }, []);
+  const { data: loanPools } = useQuery({
+    queryKey: ['LOAN_POOLS'],
+    queryFn: fetchLoanPools
+  });
+
+  console.log({ loanPools });
   return (
-    <Grid container paddingY={2.65} gap={2}>
-      <Grid item xs={12} md={5}>
-        <LoanPoolCard />
-      </Grid>
-      <Grid item xs={12} md={5}>
-        <LoanPoolCard />
-      </Grid>
-      <Grid item xs={12} md={5}>
-        <LoanPoolCard />
-      </Grid>
-      <Grid item xs={12} md={5}>
-        <LoanPoolCard />
-      </Grid>
+    <Grid container paddingY={2.65}>
+      {loanPools?.map((loanPool: LoanPoolsModel) => (
+        <Grid key={loanPool.id} item xs={12} md={6} pr={2} pb={2}>
+          <LoanPoolCard loanPool={loanPool} />
+        </Grid>
+      ))}
     </Grid>
   );
 };
