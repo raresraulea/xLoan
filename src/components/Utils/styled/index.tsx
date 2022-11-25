@@ -1,11 +1,10 @@
-import { Box, Box, TextField } from '@mui/material';
+import { Box, TextField } from '@mui/material';
 import { styled } from '@mui/system';
 import { DataGrid } from '@mui/x-data-grid';
 
-export const MainTable = styled(DataGrid)(({ theme: _ }) => ({
+export const MainTable = styled(DataGrid)(() => ({
   '&&&': {
     borderRadius: '10px',
-    backgroundColor: _.palette.background.secondary,
     border: 'none',
     '& .MuiDataGrid-columnSeparator': {
       display: 'none'
@@ -19,8 +18,7 @@ export const MainTable = styled(DataGrid)(({ theme: _ }) => ({
       }
     },
     '& p': {
-      margin: 0,
-      color: _.palette.black.reducedOpacity
+      margin: 0
     },
     '& .MuiDataGrid-cell:focus, & .MuiDataGrid-cell:focus-within, & .MuiDataGrid-cell:focus-visible, & .MuiDataGrid-columnHeader:focus, & .MuiDataGrid-columnHeader:focus-within, & .MuiDataGrid-columnHeader:focus-visible':
       {
@@ -34,10 +32,7 @@ export const MainTable = styled(DataGrid)(({ theme: _ }) => ({
       margin: '0 8px'
     },
     '& .MuiTablePagination-actions': {
-      marginLeft: '15px',
-      '& button svg': {
-        color: _.palette.secondary.main
-      }
+      marginLeft: '15px'
     }
   }
 }));
@@ -47,25 +42,9 @@ export const StakingSearchBar = styled(TextField)`
     width: 100%;
     & .MuiFilledInput-root {
       background-color: transparent;
-      color: ${(props) => props.theme.palette.text.primary} !important;
-    }
-    & .MuiFilledInput-root:before {
-      border-bottom: 1px solid
-        ${(props) => props.theme.palette.divider.secondary};
-    }
-    & .MuiFilledInput-root:after {
-      border-color: ${(props) => props.theme.palette.borders.active};
     }
     & .MuiFilledInput-input {
       padding: 1rem 0;
-    }
-    & .MuiSvgIcon-root {
-      color: ${(props) => props.theme.palette.text.primary};
-    }
-    &:hover {
-      & .MuiFilledInput-root:before {
-        border-color: ${(props) => props.theme.palette.borders.active};
-      }
     }
   }
 `;

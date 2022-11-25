@@ -1,5 +1,4 @@
 import { Components, SimplePaletteColorOptions } from '@mui/material';
-import palette from './palette';
 import { ThemeOptions } from './types';
 
 export default function componentStyleOverrides({
@@ -18,7 +17,6 @@ export default function componentStyleOverrides({
         }
       }
     },
-
     MuiAccordion: {
       styleOverrides: {
         root: {
@@ -172,6 +170,7 @@ export default function componentStyleOverrides({
         }
       }
     },
+
     MuiInputBase: {
       styleOverrides: {
         sizeSmall: {

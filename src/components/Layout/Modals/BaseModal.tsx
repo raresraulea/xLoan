@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Divider, Typography, useTheme } from '@mui/material';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
+import { transform } from 'lodash';
 import { useDispatch } from 'react-redux';
 import { setGlobalModalSelectedOption } from 'redux/slices/modalsSlice';
 import * as Styled from './styled';
@@ -26,8 +27,9 @@ export const BaseModal = ({ content, title }: BaseModalProps) => {
       position: 'absolute' as const,
       top: '50%',
       left: '50%',
+      width: 500,
+      maxWidth: '100%',
       transform: 'translate(-50%, -50%)',
-      width: 400,
       backgroundColor: theme.palette.secondary.main,
       borderRadius: '10px',
       boxShadow: 24

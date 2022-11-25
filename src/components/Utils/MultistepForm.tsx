@@ -99,7 +99,13 @@ const MultistepForm = ({
           isFinalActionButtonVisible) && (
           <Box display={'flex'} gap={2} py={2}>
             {isBackButtonVisible && (
-              <Button onClick={proceedToPreviousStep}>
+              <Button
+                variant='contained'
+                color='secondary'
+                size='small'
+                sx={{ width: '50%' }}
+                onClick={proceedToPreviousStep}
+              >
                 <Typography>Back</Typography>
               </Button>
             )}
@@ -108,7 +114,6 @@ const MultistepForm = ({
                 disabled={!isNextButtonActive}
                 variant='contained'
                 fullWidth={!isBackButtonVisible}
-                color='secondary'
                 size='small'
                 onClick={proceedToNextStep}
               >
@@ -117,6 +122,9 @@ const MultistepForm = ({
             ) : (
               isFinalActionButtonVisible && (
                 <Button
+                  variant='contained'
+                  size='small'
+                  sx={{ width: '50%' }}
                   disabled={!isFinalStepButtonActive}
                   onClick={builtFinalActionHandler}
                 >

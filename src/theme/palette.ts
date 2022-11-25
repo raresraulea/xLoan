@@ -2,6 +2,10 @@ import { PaletteMode, PaletteOptions } from '@mui/material';
 import colors from './customColors';
 
 const darkPallete: PaletteOptions = {
+  action: {
+    disabledBackground: colors.disabledBackground,
+    disabled: colors.disabledText
+  },
   background: {
     paper: colors.mainBackground,
     default: colors.backgroundDefault,
@@ -37,6 +41,10 @@ const darkPallete: PaletteOptions = {
 };
 
 const lightPalette: PaletteOptions = {
+  action: {
+    disabledBackground: colors.disabledBackground,
+    disabled: colors.disabledText
+  },
   background: {
     paper: colors.primaryMain,
     default: colors.boxColor,

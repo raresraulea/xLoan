@@ -22,6 +22,7 @@ import { ApiNetworkProvider } from '@elrondnetwork/erdjs-network-providers';
 
 import { Balance } from '@mui/icons-material';
 import { Button, Grid } from '@mui/material';
+import CreateLoanPoolForm from 'components/Forms/CreateLoanPoolForm';
 import { smartContractCode } from 'helpers/constants';
 
 const DeployNewPoolModal = () => {
@@ -126,6 +127,9 @@ const DeployNewPoolModal = () => {
   return (
     <Grid container>
       <Grid item xs={12}>
+        <CreateLoanPoolForm />
+      </Grid>
+      {/* <Grid item xs={12}>
         <Button
           color='primary'
           variant='contained'
@@ -134,7 +138,7 @@ const DeployNewPoolModal = () => {
         >
           Deploy
         </Button>
-      </Grid>
+      </Grid> */}
     </Grid>
   );
 };

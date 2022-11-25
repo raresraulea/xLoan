@@ -12,7 +12,10 @@ const AvailableLoanPools = () => {
   }, []);
   const { data: loanPools } = useQuery({
     queryKey: ['LOAN_POOLS'],
-    queryFn: fetchLoanPools
+    queryFn: fetchLoanPools,
+    refetchOnMount: false,
+    refetchOnReconnect: false,
+    refetchOnWindowFocus: false
   });
 
   console.log({ loanPools });

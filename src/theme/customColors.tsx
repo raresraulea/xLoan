@@ -30,7 +30,9 @@ const colors = {
   lightText: '#ededed',
   darkText: '#353535',
   blueish: '#B9CBE8',
-  white: '#FFF'
+  white: '#FFF',
+  disabledBackground: '#949c7ca3 !important',
+  disabledText: '#282828'
 };
 
 export default colors;

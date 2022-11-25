@@ -1,5 +1,6 @@
 import React from 'react';
-import { Box, Typography } from '@mui/material';
+import { Typography } from '@mui/material';
+import { CenteredBox } from './styled';
 
 interface PercentageWithIconProps {
   icon: React.ReactNode;
@@ -8,12 +9,13 @@ interface PercentageWithIconProps {
 
 const PercentageWithIcon = ({ icon, percentage }: PercentageWithIconProps) => {
   return (
-    <Box sx={{ display: 'flex', gap: '2px' }}>
-      <Typography>{icon}</Typography>
-      <Typography fontSize={15} fontWeight={500}>
-        {percentage}%
+    <CenteredBox sx={{ gap: '2px', width: '100%' }}>
+      {percentage !== '∞' && <Typography>{icon}</Typography>}
+      <Typography fontSize={15} fontWeight={500} textAlign='center'>
+        {percentage}
+        {percentage !== '∞' && '%'}
       </Typography>
-    </Box>
+    </CenteredBox>
   );
 };
 

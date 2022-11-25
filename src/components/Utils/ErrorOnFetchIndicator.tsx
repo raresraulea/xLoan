@@ -1,5 +1,6 @@
+import React from 'react';
 import { Box } from '@mui/system';
-import { CenteredBox } from 'src/components/StyledComponents/StyledComponents';
+import { CenteredBox } from './styled';
 
 type Props = {
   dataName: string;
