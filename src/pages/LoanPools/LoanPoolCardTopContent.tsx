@@ -5,7 +5,19 @@ import LoanPoolImage from '../../assets/img/image.png';
 
 const SQUARE_IMAGE_WIDTH = 30;
 
-const LoanPoolCardTopContent = () => {
+interface IProps {
+  generatedApr: number;
+  interestRate: number;
+  title: string;
+  tokenIdentifier: string;
+}
+
+const LoanPoolCardTopContent = ({
+  generatedApr,
+  interestRate,
+  title,
+  tokenIdentifier
+}: IProps) => {
   return (
     <Grid container>
       <Grid item xs={3} sm={2} md={2.2}>
@@ -18,7 +30,7 @@ const LoanPoolCardTopContent = () => {
           flexDirection='column'
           justifyContent='space-evenly'
         >
-          <Typography>EGLD Loan Pool</Typography>
+          <Typography>{title}</Typography>
           <Box display='flex' justifyContent='space-between' width='100%'>
             <Box display='flex' alignItems='center'>
               <ElrondLogoWhite
@@ -27,7 +39,7 @@ const LoanPoolCardTopContent = () => {
                 className='mr-3'
               />
               <Box>
-                <Typography fontSize={12}>$EGLD</Typography>
+                <Typography fontSize={12}>${tokenIdentifier}</Typography>
                 <Typography fontSize={10} color='text.secondary'>
                   $50.21
                 </Typography>
@@ -40,10 +52,10 @@ const LoanPoolCardTopContent = () => {
               justifyContent='space-evenly'
             >
               <Typography fontSize={12} color='text.secondary'>
-                Interest: 2.23%
+                Interest: {interestRate}
               </Typography>
               <Typography fontSize={10} color='text.secondary'>
-                Generated APR: 12%
+                Generated APR: {generatedApr}
               </Typography>
             </Box>
           </Box>
