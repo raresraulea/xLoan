@@ -34,7 +34,7 @@ export default function useProviderIdentitiesAfterSelection({
     (data: IProviderIdentity[]): IdentityWithColumns[] =>
       data.map((provider: IProviderIdentity) => {
         const stakedAmount = Number(
-          TokenPayment.egldFromBigInteger(provider.locked).toPrettyString()
+          TokenPayment.egldFromBigInteger(provider.locked).toString()
         );
         const providerBeforeIdentityFetch = fetchedProviders?.find(
           (p) => p.identity === provider.identity
@@ -47,6 +47,8 @@ export default function useProviderIdentitiesAfterSelection({
 
         let filledPercentage = 0;
         if (providerDelegationCap !== 0) {
+          console.log({ stakedAmount });
+          console.log({ providerDelegationCap });
           filledPercentage = stakedAmount / providerDelegationCap;
         }
 
