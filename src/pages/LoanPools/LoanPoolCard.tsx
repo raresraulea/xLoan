@@ -26,13 +26,13 @@ export const LoanPoolCard = ({ loanPool }: IProps) => {
         <LoanPoolCardBottomContent />
       </CardContent>
       <CardActions sx={{ px: 2, pb: 2 }}>
-        <Grid container>
-          <Grid item xs={12} md={6} pr={1}>
+        <Grid container spacing={1}>
+          <Grid item xs={12} md={6}>
             <Button fullWidth color='primary' variant='contained' size='small'>
               Loan Funds
             </Button>
           </Grid>
-          <Grid item xs={12} md={6} pl={1}>
+          <Grid item xs={12} md={6}>
             <Button
               fullWidth
               color='secondary'

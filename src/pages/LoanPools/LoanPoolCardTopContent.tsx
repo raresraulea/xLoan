@@ -20,7 +20,7 @@ const LoanPoolCardTopContent = ({
 }: IProps) => {
   return (
     <Grid container>
-      <Grid item xs={3} sm={2} md={2.2}>
+      <Grid item xs={3.3} sm={2} md={2.1} lg={1.9}>
         <img width={60} height={60} src={LoanPoolImage} alt='' />
       </Grid>
       <Grid item xs={9}>

@@ -32,7 +32,8 @@ const colors = {
   blueish: '#B9CBE8',
   white: '#FFF',
   disabledBackground: '#949c7ca3 !important',
-  disabledText: '#282828'
+  disabledText: '#282828',
+  darkDivider: 'rgba(255, 255, 255, 0.12)'
 };
 
 export default colors;

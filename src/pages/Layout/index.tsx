@@ -121,7 +121,7 @@ function DashboardContent() {
       <ModalLayer />
       <Box sx={{ display: 'flex' }}>
         <CssBaseline />
-        <AppBar position='absolute' open={open}>
+        <AppBar open={open}>
           <Toolbar
             sx={{
               pr: '24px', // keep right padding when drawer closed
@@ -205,11 +205,11 @@ function DashboardContent() {
             flexGrow: 1,
             height: '100vh',
             overflow: 'auto',
-            padding: '2rem'
+            padding: '2rem',
+            pt: '7rem'
           }}
         >
-          <Toolbar />
-          <Container maxWidth='lg' sx={{ my: 2 }}>
+          <Container sx={{ my: 2 }}>
             <Grid container spacing={3}>
               <Routes>
                 <Route path={routeNames.unlock} element={<UnlockPage />} />

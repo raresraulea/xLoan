@@ -1,4 +1,5 @@
 import { Components, SimplePaletteColorOptions } from '@mui/material';
+import colors from './customColors';
 import { ThemeOptions } from './types';
 
 export default function componentStyleOverrides({
@@ -14,6 +15,15 @@ export default function componentStyleOverrides({
         elevation: {
           border: 'none !important',
           backgroundColor: (palette.secondary as SimplePaletteColorOptions).main
+        }
+      }
+    },
+    MuiFilledInput: {
+      styleOverrides: {
+        root: {
+          '::before': {
+            borderBottom: `1px solid ${colors.darkDivider}`
+          }
         }
       }
     },
@@ -34,8 +44,11 @@ export default function componentStyleOverrides({
           fontWeight: 200,
           color: (palette.primary as SimplePaletteColorOptions).main,
           borderRadius: '4px',
-          backgroundColor: (palette.error as SimplePaletteColorOptions).light,
-          boxShadow: 'none'
+          boxShadow: 'none',
+          width: '100%',
+          background: 'transparent',
+          fontSize: 14,
+          border: `1px solid ${colors.darkDivider}`
         },
         notchedOutline: {
           border: '0 !important'
@@ -67,7 +80,8 @@ export default function componentStyleOverrides({
     MuiContainer: {
       styleOverrides: {
         root: {
-          marginY: '0'
+          marginY: '0',
+          maxWidth: '100% !important'
         }
       }
     },
@@ -183,9 +197,7 @@ export default function componentStyleOverrides({
           ':before': {
             borderBottom: 'none'
           },
-          ':hover': {
-            borderBottom: 'none'
-          }
+          ':hover': {}
         }
       }
     },
@@ -219,11 +231,7 @@ export default function componentStyleOverrides({
 
     MuiSelect: {
       styleOverrides: {
-        select: {
-          padding: '0.5rem'
-        },
         standard: {
-          fontSize: '12px',
           fontWeight: 200
         },
         icon: {

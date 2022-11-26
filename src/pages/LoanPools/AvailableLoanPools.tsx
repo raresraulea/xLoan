@@ -20,7 +20,7 @@ const AvailableLoanPools = () => {
 
   console.log({ loanPools });
   return (
-    <Grid container paddingY={2.65}>
+    <Grid container paddingX={0} paddingY={2.65}>
       {loanPools?.map((loanPool: LoanPoolsModel) => (
         <Grid key={loanPool.id} item xs={12} md={6} pr={2} pb={2}>
           <LoanPoolCard loanPool={loanPool} />
