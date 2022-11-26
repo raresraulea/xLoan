@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import SearchRoundedIcon from '@mui/icons-material/SearchRounded';
-import { Box, InputAdornment } from '@mui/material';
+import { Box, InputAdornment, Typography } from '@mui/material';
 import { useSelector } from 'react-redux';
 import { StakingSearchBar } from 'components/Utils/styled';
 import useDebounce from 'hooks/useDebounce';
 import { selectedStakingProviderSelector } from 'redux/selectors/selectionsSelector';
 import { Div } from 'theme';
+import colors from 'theme/customColors';
 import ProvidersList from './ProvidersList';
 
 interface Props {
@@ -29,37 +30,30 @@ const StakingFormStepOne = ({ enableNextStep = () => null }: Props) => {
 
   return (
     <Div>
-      <StakingSearchBar
-        placeholder='Search for a provider'
-        onChange={(e: any) => setSearchParam(e.target.value)}
-        value={searchParam}
-        variant='filled'
-        InputProps={{
-          startAdornment: (
-            <InputAdornment position='start' sx={{ mt: '0 !important' }}>
-              <SearchRoundedIcon />
-            </InputAdornment>
-          )
-        }}
-      />
-      <Box
-        sx={{
-          position: 'relative',
-          '&:after': {
-            position: 'absolute',
-            width: '100%',
-            height: '38px',
-            content: '""',
-            bottom: '0',
-            left: '0',
-            transition: 'height .3s linear'
-          },
-          '&.scrolledToBottom:after': {
-            height: '0px'
-          }
-        }}
-      >
-        <ProvidersList searchParam={debouncedSearchParam} />
+      <Typography mb={2}>
+        Step 1: Select a Staking Provider to collaborate with:
+      </Typography>
+      <Box border={`1px solid ${colors.darkDivider}`} borderRadius='4px'>
+        <StakingSearchBar
+          placeholder='Search for a provider'
+          onChange={(e: any) => setSearchParam(e.target.value)}
+          value={searchParam}
+          variant='filled'
+          InputProps={{
+            startAdornment: (
+              <InputAdornment position='start' sx={{ mt: '0 !important' }}>
+                <SearchRoundedIcon />
+              </InputAdornment>
+            )
+          }}
+        />
+        <Box
+          sx={{
+            position: 'relative'
+          }}
+        >
+          <ProvidersList searchParam={debouncedSearchParam} />
+        </Box>
       </Box>
     </Div>
   );
