@@ -1,10 +1,17 @@
 import React, { useLayoutEffect, useMemo, useRef, useState } from 'react';
-import { Box, Button } from '@mui/material';
+import AddIcon from '@mui/icons-material/Add';
+import RemoveIcon from '@mui/icons-material/Remove';
+import { Box, Button, Grid, IconButton, TextField } from '@mui/material';
+import { NumericFormat } from 'react-number-format';
 import { useSelector } from 'react-redux';
+import BasicSelect from 'components/Utils/BasicSelect';
 import { useMultistepFormContext } from 'components/Utils/MultistepForm';
 import useProviderIdentitiesAfterSelection from 'hooks/useProviderIdentitiesAfterSelection';
 import { selectedStakingProviderSelector } from 'redux/selectors/selectionsSelector';
+import colors from 'theme/customColors';
 import ProviderPresentation from './ProviderPresentation';
+
+const APR_STEP = 0.25;
 
 const StakingFormStepTwo = () => {
   const selectedProviderIdentifier = useSelector(
@@ -25,6 +32,8 @@ const StakingFormStepTwo = () => {
 
   const buttonRef = useRef<any>(null);
   const [buttonWidth, setButtonWidth] = useState(0);
+
+  const [poolApr, setPoolApr] = useState(selectedProvider?.aprColumn?.apr ?? 0);
 
   useLayoutEffect(() => {
     setButtonWidth(buttonRef?.current?.offsetWidth);
@@ -68,6 +77,63 @@ const StakingFormStepTwo = () => {
           </Button>
         </Box>
       </Box>
+      <Box>
+        <TextField
+          fullWidth
+          variant='outlined'
+          label='Pool Title'
+          size='medium'
+        />
+      </Box>
+      <Grid container spacing={2}>
+        <Grid item sm={6} display='flex' gap={1} width='100%'>
+          <IconButton
+            sx={{
+              backgroundColor: 'transparent',
+              color: '#757575',
+              border: `1px solid ${colors.darkDivider}`,
+              width: 55
+            }}
+            onClick={() => setPoolApr((apr) => apr - APR_STEP)}
+            aria-label='upload picture'
+            component='label'
+          >
+            <RemoveIcon />
+          </IconButton>
+          <NumericFormat
+            name='apr'
+            id='amount'
+            value={poolApr}
+            thousandSeparator
+            onChange={(e: any) => setPoolApr(+e.target.value)}
+            // onBlur={formik.handleBlur}
+            // className={addressError != null ? 'isError' : ''}
+            customInput={TextField}
+            variant='outlined'
+            label='Pool APR'
+            size='medium'
+            style={{
+              width: '100%'
+            }}
+          />
+          <IconButton
+            sx={{
+              backgroundColor: 'transparent',
+              color: '#757575',
+              border: `1px solid ${colors.darkDivider}`,
+              width: 55
+            }}
+            onClick={() => setPoolApr((apr) => apr + APR_STEP)}
+            aria-label='upload picture'
+            component='label'
+          >
+            <AddIcon />
+          </IconButton>
+        </Grid>
+        <Grid item sm={6}>
+          <BasicSelect />
+        </Grid>
+      </Grid>
     </Box>
   );
 };
